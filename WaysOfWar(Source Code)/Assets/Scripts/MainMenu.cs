@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public Canvas MenuUi; 
+    
     public void PlayGame()
     {
-        SceneManager.LoadScene(1);
+        MenuUi.gameObject.SetActive(false);
     }
 
     public void QuitGame()
