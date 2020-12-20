@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
-{
+{ 
+    //Emeny Health
     public Slider slider;
 
     public void SetMaxHealth(int health)
@@ -12,6 +13,7 @@ public class EnemyHealth : MonoBehaviour
         slider.maxValue = health;
         slider.value = health;
     }
+   
     public void SetHealth(int health)
     {
         slider.value = health;

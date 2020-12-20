@@ -64,7 +64,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1a3754e2dfe99d346a94c6b2fd9b15ed, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b545107ac91fb80428db546f6a6d6481, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c8bbd02a88c2bbc41b7d7e50ec7b2aa7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7e8263993b78ea943b9c73f4170b365c, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -700,6 +700,7 @@ MonoBehaviour:
   currentHealth: 50
   healthbar: {fileID: 3162050662062483765}
   lookRadius: 10
+  GotHit: 0
 --- !u!1 &8890391183704596476
 GameObject:
   m_ObjectHideFlags: 0

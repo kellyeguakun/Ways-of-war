@@ -5,10 +5,12 @@ using UnityEngine;
 public class SwordDetectCollisons : MonoBehaviour
 {
     private  Enemy EnemyScript;
+    private Boss BossScript;
     private PlayerController playerControllerScript;
+    public int Str;
     
 
-    // Start is called before the first frame update
+    
     void Start()
     {
 
@@ -19,9 +21,10 @@ public class SwordDetectCollisons : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
+        //Calling Other Scripts
         if (GameObject.Find("Enemy(Clone)")!= null)
         {
           EnemyScript = GameObject.FindGameObjectWithTag("Enemy").GetComponent<Enemy>();
@@ -30,6 +33,14 @@ public class SwordDetectCollisons : MonoBehaviour
         }
         
         playerControllerScript = GameObject.Find("Player").GetComponent<PlayerController>();
+        BossScript = GameObject.Find("Boss").GetComponent<Boss>();
+
+        Str = playerControllerScript.Strength;
+
+
+
+
+
     }
 
     void AnimAttack()
@@ -39,19 +50,31 @@ public class SwordDetectCollisons : MonoBehaviour
            
         }
     }
+   
     private void OnTriggerEnter(Collider other)
     {
+       //Enemy is hit
         if (playerControllerScript.Attack() == true)
         {
-            if (other.gameObject.CompareTag("Enemy"))
+            if (other.gameObject.tag=="Enemy")
             {
                 
-                EnemyScript.TakeDamage(20);
-                Debug.Log("It works ");
+                EnemyScript.TakeDamage(Str);
+                Debug.Log("You Hit some one");
+            
             }
+           //Boss is hit
+            else if (other.gameObject.tag=="Boss")
+            {
+                Debug.Log("You hit the boss");
+                BossScript.TakeDamage(Str);
+                
+            }
+            
         }
      
 
     }
+    
 
 }

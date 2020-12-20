@@ -6,7 +6,7 @@ using TMPro;
 
 public class SpawnManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // Var
     public GameObject enemyPrefab;
     public GameObject HealthPotionPrefab;
     public float spawnRange = 100;
@@ -31,11 +31,12 @@ public class SpawnManager : MonoBehaviour
 
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
         enemyCount = FindObjectsOfType<Enemy>().Length;
 
+        //If enemy is O do this 
         if (enemyCount == 0)
         {
             Instantiate(HealthPotionPrefab, HGenerateSpawnPosition(), HealthPotionPrefab.transform.rotation);
@@ -53,6 +54,7 @@ public class SpawnManager : MonoBehaviour
         }
     }
     
+    //Spawn Postions  for enemy
     private Vector3 GenerateSpawnPosition()
     {
         float spawnPosX = Random.Range(-spawnRange, spawnRange);
@@ -63,6 +65,14 @@ public class SpawnManager : MonoBehaviour
 
     }
 
+
+
+
+
+
+
+
+    //Spawn for health Potiton
     private Vector3 HGenerateSpawnPosition()
     {
         float spawnPosX = Random.Range(-spawnRange, spawnRange);
@@ -82,7 +92,7 @@ public class SpawnManager : MonoBehaviour
 
 
 
-
+    //Genarate Enemy
     void SpawnEnemyWave(int enemiesToSpawn)
     {
         for(int i =0; i< enemiesToSpawn; i++)

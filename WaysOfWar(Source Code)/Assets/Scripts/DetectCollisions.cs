@@ -6,6 +6,7 @@ public class DetectCollisions : MonoBehaviour
 {
     private PlayerController playerControllerScript;
 
+
     // Start is called before the first frame update
     public int Dmg = 20;
     void Start()
@@ -19,11 +20,15 @@ public class DetectCollisions : MonoBehaviour
         
     }
 
+    
+
+   //When enemy hits player
     public void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "Player")
+        if (other.gameObject.name == "Player"&& playerControllerScript.BlockActive==false)
         {
             playerControllerScript.TakeDamage(Dmg);
+            StartCoroutine(playerControllerScript.GetComponent<PlayerController>().GotHit());
             Debug.Log("You took Dmg Ouch ");
         }
     }

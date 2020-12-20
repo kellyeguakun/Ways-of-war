@@ -16,6 +16,8 @@ public class Enemy : MonoBehaviour
     public float lookRadius = 10f;
     Transform target;
     NavMeshAgent agent;
+    public bool GotHit;
+    
 
 
 
@@ -31,27 +33,27 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Enemy AI follow
         float distance = Vector3.Distance(target.position, transform.position);
-         if(distance <= lookRadius)
+        if (distance <= lookRadius)
         {
             agent.SetDestination(target.position);
         }
-        
-        
-        //Vector3 lookDirection = (Player.transform.position - transform.position).normalized;
-        //enemyRb.AddForce(lookDirection * speed);
+
+
+
         EnemyAnim.Play("Run");
 
-        
-        
-        
-        
-        
+
+
+
+
+
         if (transform.position.y < -10)
         {
             Destroy(gameObject);
         }
-
+        //Debugging Tool
         if (Input.GetKeyDown(KeyCode.L))
         {
 
@@ -62,6 +64,7 @@ public class Enemy : MonoBehaviour
         Death();
     }
 
+    //Enemy Take damage
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
@@ -70,7 +73,8 @@ public class Enemy : MonoBehaviour
         EnemyAnim.Play("Idle");
         healthbar.SetHealth(currentHealth);
     }
-
+    
+    //When emeny dies
     void Death()
     {
         if (currentHealth <= 0)
@@ -78,17 +82,19 @@ public class Enemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
+    //When Enemy is hitted
     public IEnumerator onHit()
-    { 
-
+    {
+        EnemyAnim.Play("GetHit");
          enemyRb.isKinematic=true;
          yield return new WaitForSeconds(1);
         enemyRb.isKinematic = false;
-        
+        EnemyAnim.Play("Run");
+        Debug.Log("They Froze");
 
     }
 
+    //Area where enemy spots Player
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
